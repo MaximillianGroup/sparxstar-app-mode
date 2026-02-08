@@ -17,8 +17,7 @@
 /* ------------------------------------------------
    1. Trigger Elements
 ------------------------------------------------ */
-.sparxstar-app-mode,
-.starmus-app-mode {
+.sparxstar-app-mode {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
