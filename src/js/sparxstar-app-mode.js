@@ -8,7 +8,7 @@
 
 /* =================================================================
    SPARXSTAR APP MODE ENGINE (Final Locked v1.2)
-   - Starmus Contract: Implemented
+   - SPARXSTAR Contract: Implemented
    - Stability: iOS Keyboard, Rotate, History, Memory Leaks
    - Accessibility: WAI-ARIA (aria-modal), Robust Focus Trap
    - Gestures: Momentum-aware Swipe Down + touchcancel safety
@@ -20,7 +20,7 @@ const SparxstarApp = {
     activeElement: null,
     triggerElement: null,
     threshold: 1024,
-    targetClasses: [".sparxstar-app-mode", ".starmus-app-mode"],
+    targetClasses: [".sparxstar-app-mode"],
 
     // Internal State
     scrollTop: 0,
@@ -56,7 +56,7 @@ const SparxstarApp = {
         });
 
         // 3. STARMUS CONTRACT: Submission Success
-        window.addEventListener("starmus:submissionAccepted", () => {
+        window.addEventListener("sparxstar:submissionAccepted", () => {
             if (this.activeElement) this.close();
         });
 
