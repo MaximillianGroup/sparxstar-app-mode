@@ -1,4 +1,7 @@
-Sparxstar App Mode
+
+![app-mode](https://github.com/user-attachments/assets/36889919-62b4-437e-a05b-752c4bed6f2b)
+
+SPARXSTAR App Mode
 ==============================================
 
 **A zero-dependency, framework-agnostic UI engine that transforms standard HTML elements into native-feeling, full-screen mobile experiences.**
