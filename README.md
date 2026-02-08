@@ -95,7 +95,7 @@ expand_less
 
 * * * * *
 
-3\. The Starmus Submission Contract (Integration)
+3\. The SPARXSTAR Submission Contract (Integration)
 -------------------------------------------------
 
 This is the **strict requirement** for closing the App Mode programmatically (e.g., after a successful form submission).
@@ -135,7 +135,43 @@ function handleSubmit(formData) {
 
 * * * * *
 
-4\. Key Features & Behavior
+5\. Design Constraints (Integration)
+-------------------------------------------------
+If you put a form inside this engine that is hard-coded to width: 800px, the engine **will** work, but it will scale that form down to fit a mobile screen (e.g., 375px wide). That results in a **0.46x scale**, meaning text becomes microscopic and buttons become too small to tap.
+
+The Engine guarantees it **fits**, but only **you** can guarantee it is **legible**.
+
+### The "Responsive Safety Net" CSS (Opt-In)
+
+To ensure forms (e.g. WordPress, Gravity Forms, CF7, WPForms) play nice inside App Mode, a safety net is in place to ensure text is legible and elemets and functionally finger-sized. the form safety net is opt-in (via a utility class) and is not enforced until activated. Activaton of the safety net prevents the accidental breaking of a custom-designed form that might rely on a specific layout, while still providing a "one-click fix" for broken Gravity/Contact Forms or native forms. This is **smart engineering**.
+
+The CSS logic itself:
+1.  **Selector Strategy:** `.sparxstar-active.sparxstar-form-safe` correctly targets the specific open modal that has the safety class.
+2.  **Input Sizing:** `16px` font size effectively kills the annoying iOS zoom-on-focus behavior.
+3.  **Touch Targets:** `44px` height meets Apple's Human Interface Guidelines.
+4.  **Checkbox Fix:** Explicitly sizing checkboxes to `20px` is a great detail, as standard browser checkboxes are often too hard to tap on mobile.
+
+### How to use this in your workflow
+
+Since this is Opt-In, you need to tell the HTML or Shortcode to include that specific class.
+
+**Option A: HTML**
+```html
+<!-- Add 'sparxstar-form-safe' to your wrapper -->
+<div class="starmus-app-mode sparxstar-form-safe">
+    [contact-form-7 id="123"]
+</div>
+```
+
+**Option B: Shortcode**
+If you use the shortcode provided in the WORDPRESS.md file, you can pass it via the `class` attribute:
+```text
+[starmus_app class="sparxstar-form-safe"]
+    [gravityform id="1"]
+[/starmus_app]
+```
+
+5\. Key Features & Behavior
 ---------------------------
 
 ### 📱 Native Gestures
