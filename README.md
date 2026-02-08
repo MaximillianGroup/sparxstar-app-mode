@@ -236,4 +236,4 @@ Before deploying, verify:
 
 **Back Button:** Browser Back button closes the app.
 
-**Submission:** Successful form submit fires starmus:submissionAccepted and closes the view.
+**Submission:** Successful form submit fires sparxstar:submissionAccepted and closes the view.
