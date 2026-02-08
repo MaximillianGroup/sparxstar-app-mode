@@ -127,3 +127,55 @@ body.sparxstar-scroll-locked {
     user-select: text;
     cursor: text;
 }
+
+/* ================================================================
+   6. RESPONSIVE FORM SAFETY NET (OPT-IN)
+   Use by adding: .sparxstar-active.sparxstar-form-safe
+   ================================================================ */
+
+/* Force container to be mobile-fluid */
+.sparxstar-active.sparxstar-form-safe form,
+.sparxstar-active.sparxstar-form-safe .wpcf7,
+.sparxstar-active.sparxstar-form-safe .gform_wrapper,
+.sparxstar-active.sparxstar-form-safe .wpforms-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Stack columns vertically */
+.sparxstar-active.sparxstar-form-safe .gfield,
+.sparxstar-active.sparxstar-form-safe .wpforms-field {
+    width: 100% !important;
+    float: none !important;
+    margin-right: 0 !important;
+}
+
+/* Ensure inputs are tappable and legible */
+.sparxstar-active.sparxstar-form-safe
+input:not([type="checkbox"]):not([type="radio"]),
+.sparxstar-active.sparxstar-form-safe select,
+.sparxstar-active.sparxstar-form-safe textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 44px;
+    font-size: 16px !important;
+    box-sizing: border-box;
+}
+
+/* Improve checkbox / radio tap area without breaking layout */
+.sparxstar-active.sparxstar-form-safe
+input[type="checkbox"],
+.sparxstar-active.sparxstar-form-safe
+input[type="radio"] {
+    min-width: 20px;
+    min-height: 20px;
+}
+
+/* Fix common WP form padding issues */
+.sparxstar-active.sparxstar-form-safe .gform_body,
+.sparxstar-active.sparxstar-form-safe .wpcf7-form {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
