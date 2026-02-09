@@ -1,0 +1,32 @@
+{
+  "name": "sparxstar-app-mode",
+  "version": "1.0.0",
+  "description": "A mobile-first completion environment that temporarily places a form or workflow into a focused, distraction-free frame",
+  "main": "src/sparxstar-app-mode.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.js test/**/*.js",
+    "lint:fix": "eslint src/**/*.js test/**/*.js --fix",
+    "format": "prettier --write \"src/**/*.js\" \"test/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \"test/**/*.js\""
+  },
+  "keywords": [
+    "mobile",
+    "app-mode",
+    "fullscreen",
+    "scroll",
+    "ux"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^3.2.4"
+  }
+}
