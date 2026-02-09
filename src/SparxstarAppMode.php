@@ -20,6 +20,8 @@ namespace Starisian\Sparxstar\Starmus\integrations\appmode;
 
 final class SparxstarAppMode
 {
+    private bool $assets_enqueued = false;
+
     public function __construct()
     {
         // register hooks
@@ -30,8 +32,7 @@ final class SparxstarAppMode
 
     private function sparxstarRegisterHooks(): void
     {
-        // Load assets on the frontend only
-        add_action( 'wp_enqueue_scripts', [$this, 'sparxstarEnqueueAssets'] );
+        // Assets are enqueued only when the shortcode renders.
     }
 
     private function sparxstarRegisterShortcodes(): void
@@ -82,6 +83,12 @@ final class SparxstarAppMode
      */
     public function sparxstarEnqueueAssets(): void
     {
+        if ( $this->assets_enqueued ) {
+            return;
+        }
+
+        $this->assets_enqueued = true;
+
         // Resolve CSS
         $css_asset = $this->sparxstarGetAsset(
             '../../css/',
@@ -126,6 +133,8 @@ final class SparxstarAppMode
         $atts = shortcode_atts( [
             'class' => '',
         ], $atts );
+
+        $this->sparxstarEnqueueAssets();
 
         $content = do_shortcode( shortcode_unautop( $content ) );
 
