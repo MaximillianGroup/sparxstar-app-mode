@@ -128,16 +128,23 @@ final class SparxstarAppMode
     /**
      * Optional Shortcode: [sparxstar_app]Content[/sparxstar_app]
      */
-    public function sparxstarRenderShortcode(array $atts = [], string $content = null): string
+    public function sparxstarRenderShortcode(array $atts = [], ?string $content = null): string
     {
-        $atts = shortcode_atts( [
+        $atts = shortcode_atts([
             'class' => '',
-        ], $atts );
-
+        ], $atts, 'sparxstar');
+    
         $this->sparxstarEnqueueAssets();
-
-        $content = do_shortcode( shortcode_unautop( $content ) );
-
-        return '<div class="sparxstar-app-mode ' . esc_attr( $atts['class'] ) . '" aria-hidden="false">' . $content . '</div>';
+    
+        $inner = '';
+        if ($content !== null && $content !== '') {
+            $inner = do_shortcode(shortcode_unautop($content));
+        }
+    
+        return sprintf(
+            '<div class="sparxstar-app-mode %s" aria-hidden="false">%s</div>',
+            esc_attr($atts['class']),
+            $inner
+        );
     }
 }
