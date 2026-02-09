@@ -125,26 +125,33 @@ final class SparxstarAppMode
         }
     }
 
+    
+    public function sparxstarAppMode(array $atts, string $content): string
+    {
+        $this->sparxstarEnqueueAssets();
+    
+        return sprintf(
+            '<div class="sparxstar-app-mode %s" aria-hidden="false">%s</div>',
+            esc_attr($atts['class'] ?? ''),
+            $content
+        );
+    }
     /**
      * Optional Shortcode: [sparxstar_app]Content[/sparxstar_app]
      */
-    public function sparxstarRenderShortcode(array $atts = [], ?string $content = null): string
+    public function render_shortcode(array $atts = [], ?string $content = null): string
     {
         $atts = shortcode_atts([
             'class' => '',
-        ], $atts, 'sparxstar');
-    
-        $this->sparxstarEnqueueAssets();
+        ], $atts, 'sparxstar_app_mode');
     
         $inner = '';
+    
         if ($content !== null && $content !== '') {
             $inner = do_shortcode(shortcode_unautop($content));
         }
     
-        return sprintf(
-            '<div class="sparxstar-app-mode %s" aria-hidden="false">%s</div>',
-            esc_attr($atts['class']),
-            $inner
-        );
+        // THIS is the programmatic execution you wanted
+        return $this->sparxstarAppMode($atts, $inner);
     }
 }
